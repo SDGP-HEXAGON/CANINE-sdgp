@@ -158,30 +158,30 @@ from keras.applications.inception_v3 import InceptionV3, preprocess_input
 inception_preprocessor = preprocess_input
 inception_features = get_features(InceptionV3,
                                   inception_preprocessor,
-                                  img_size, x)
+                                  img_size, X)
 
 # Extract features using Xception 
 from keras.applications.xception import Xception, preprocess_input
 xception_preprocessor = preprocess_input
 xception_features = get_features(Xception,
                                  xception_preprocessor,
-                                 img_size, x)
+                                 img_size, X)
 
 # Extract features using InceptionResNetV2 
 from keras.applications.inception_resnet_v2 import InceptionResNetV2, preprocess_input
 inc_resnet_preprocessor = preprocess_input
 inc_resnet_features = get_features(InceptionResNetV2,
                                    inc_resnet_preprocessor,
-                                   img_size, x)
+                                   img_size, X)
 
 # Extract features using NASNetLarge 
 from keras.applications.nasnet import NASNetLarge, preprocess_input
 nasnet_preprocessor = preprocess_input
 nasnet_features = get_features(NASNetLarge,
                                nasnet_preprocessor,
-                               img_size, x)
+                               img_size, X)
 
-del x #to free up some ram memory
+del X #to free up some ram memory
 gc.collect()
 
 #Creating final featuremap by combining all extracted features
