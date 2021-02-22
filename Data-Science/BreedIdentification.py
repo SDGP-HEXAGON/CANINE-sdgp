@@ -124,3 +124,98 @@ for i in range (n):
     plt.title(classes[np.where(y[i]==1)[0][0]])
     plt.imshow(X[i].astype('int32'))
 
+lrr= ReduceLROnPlateau(monitor='val_acc', factor=.01, patience=3, min_lr=1e-5,verbose = 1)
+
+#Prepare call backs
+EarlyStop = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
+
+# Hyperparameters
+batch_size= 128
+epochs=50
+learn_rate=.001
+sgd=SGD(lr=learn_rate,momentum=.9,nesterov=False)
+adam=Adam(lr=learn_rate, beta_1=0.9, beta_2=0.999, epsilon=None,  amsgrad=False)
+
+#function to extract features from the dataset by a given pretrained model
+img_size = (331,331,3)
+
+def get_features(model_name, model_preprocessor, input_size, data):
+
+    input_layer = Input(input_size)
+    preprocessor = Lambda(model_preprocessor)(input_layer)
+    base_model = model_name(weights='imagenet', include_top=False,
+                            input_shape=input_size)(preprocessor)
+    avg = GlobalAveragePooling2D()(base_model)
+    feature_extractor = Model(inputs = input_layer, outputs = avg)
+    
+    #Extract feature.
+    feature_maps = feature_extractor.predict(data, verbose=1)
+    print('Feature maps shape: ', feature_maps.shape)
+    return feature_maps
+  
+# Extract features using InceptionV3 
+from keras.applications.inception_v3 import InceptionV3, preprocess_input
+inception_preprocessor = preprocess_input
+inception_features = get_features(InceptionV3,
+                                  inception_preprocessor,
+                                  img_size, x)
+
+# Extract features using Xception 
+from keras.applications.xception import Xception, preprocess_input
+xception_preprocessor = preprocess_input
+xception_features = get_features(Xception,
+                                 xception_preprocessor,
+                                 img_size, x)
+
+# Extract features using InceptionResNetV2 
+from keras.applications.inception_resnet_v2 import InceptionResNetV2, preprocess_input
+inc_resnet_preprocessor = preprocess_input
+inc_resnet_features = get_features(InceptionResNetV2,
+                                   inc_resnet_preprocessor,
+                                   img_size, x)
+
+# Extract features using NASNetLarge 
+from keras.applications.nasnet import NASNetLarge, preprocess_input
+nasnet_preprocessor = preprocess_input
+nasnet_features = get_features(NASNetLarge,
+                               nasnet_preprocessor,
+                               img_size, x)
+
+del x #to free up some ram memory
+gc.collect()
+
+#Creating final featuremap by combining all extracted features
+
+final_features = np.concatenate([inception_features,
+                                 xception_features,
+                                 nasnet_features,
+                                 inc_resnet_features,], axis=-1) #axis=-1 to concatinate horizontally
+
+print('Final feature maps shape', final_features.shape)
+
+#Prepare Deep net
+
+model = Sequential()
+# model.add(Dense(1028,input_shape=(final_features.shape[1],)))
+model.add(Dropout(0.7,input_shape=(final_features.shape[1],)))
+model.add(Dense(n_classes,activation= 'softmax'))
+
+model.compile(optimizer=adam,
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
+
+#Training the model. 
+history = model.fit(final_features, y,
+            batch_size=batch_size,
+            epochs=epochs,
+            validation_split=0.2,
+            callbacks=[lrr,EarlyStop])
+
+#deleting to free up ram memory
+
+del inception_features
+del xception_features
+del nasnet_features
+del inc_resnet_features
+del final_features
+gc.collect()
