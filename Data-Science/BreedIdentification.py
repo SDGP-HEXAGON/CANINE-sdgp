@@ -219,3 +219,96 @@ del nasnet_features
 del inc_resnet_features
 del final_features
 gc.collect()
+
+#Function to read images from test directory
+
+def images_to_array_test(test_path, img_size = (331,331,3)):
+    test_filenames = [test_path + fname for fname in os.listdir(test_path)]
+
+    data_size = len(test_filenames)
+    images = np.zeros([data_size, img_size[0], img_size[1], 3], dtype=np.uint8)
+    
+    
+    for ix,img_dir in enumerate(tqdm(test_filenames)):
+#         img_dir = os.path.join(directory, image_name + '.jpg')
+        img = load_img(img_dir, target_size = img_size)
+#         img = np.expand_dims(img, axis=0)
+#         img = processed_image_resnet(img)
+#         img = img/255
+        images[ix]=img
+#         images[ix] = img_to_array(img)
+        del img
+    print('Ouptut Data Size: ', images.shape)
+    return images
+
+test_data = images_to_array_test('/kaggle/input/dog-breed-identification/test/', img_size)
+
+#Extract test data features.
+def extact_features(data):
+    inception_features = get_features(InceptionV3, inception_preprocessor, img_size, data)
+    xception_features = get_features(Xception, xception_preprocessor, img_size, data)
+    nasnet_features = get_features(NASNetLarge, nasnet_preprocessor, img_size, data)
+    inc_resnet_features = get_features(InceptionResNetV2, inc_resnet_preprocessor, img_size, data)
+
+    final_features = np.concatenate([inception_features,
+                                     xception_features,
+                                     nasnet_features,
+                                     inc_resnet_features],axis=-1)
+    
+    print('Final feature maps shape', final_features.shape)
+    
+    #deleting to free up ram memory
+    del inception_features
+    del xception_features
+    del nasnet_features
+    del inc_resnet_features
+    gc.collect()
+    
+    
+    return final_features
+
+test_features = extact_features(test_data)
+
+
+del test_data
+gc.collect()
+
+#Predict test labels given test data features.
+
+pred = model.predict(test_features)
+
+# prediction
+print(pred[0])
+print(f"Max value (probability of prediction): {np.max(pred[0])}") # the max probability value predicted by the model
+print(f"Sum: {np.sum(pred[0])}") # because we used softmax activation in our model, this will be close to 1
+print(f"Max index: {np.argmax(pred[0])}") # the index of where the max value in predictions[0] occurs
+print(f"Predicted label: {classes[np.argmax(pred[0])]}")
+
+# Create pandas DataFrame with empty columns
+preds_df = pd.DataFrame(columns=["id"] + list(classes))
+preds_df.head()
+
+# Append test image ID's to predictions DataFrame
+test_path = "/kaggle/input/dog-breed-identification/test/"
+preds_df["id"] = [os.path.splitext(path)[0] for path in os.listdir(test_path)]
+preds_df.head()
+
+preds_df.loc[:,list(classes)]= pred
+
+preds_df.to_csv('submission.csv',index=None)
+preds_df.head()
+
+#Testing with Custom input
+Image('../input/dog-breed-identification/train/0075dc49dab4024d12fafe67074d8a81.jpg')
+
+#reading the image and converting it into an np array
+img_g = load_img('../input/dog-breed-identification/train/0075dc49dab4024d12fafe67074d8a81.jpg',target_size = img_size)
+img_g = np.expand_dims(img_g, axis=0)
+
+#Predict test labels given test data features.
+test_features = extact_features(img_g)
+predg = model.predict(test_features)
+print(f"Predicted label: {classes[np.argmax(predg[0])]}")
+print(f"Probability of prediction): {round(np.max(predg[0])) * 100} %")
+
+
