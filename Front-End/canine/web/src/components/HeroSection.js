@@ -7,7 +7,7 @@ import {useHistory} from 'react-router-dom';
 function HeroSection() {
   const history= useHistory();
   const handleClick =() => history.push('/canine')
-  const handleCheck =()=>history.push('/services')
+  const handleCheck =()=>history.push('/final')
   return (
     <div className='hero-container'>
       <video src='/videos/dog.mp4' autoPlay loop muted />
