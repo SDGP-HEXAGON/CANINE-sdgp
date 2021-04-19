@@ -6,13 +6,14 @@ import {useHistory} from 'react-router-dom';
 
 function HeroSection() {
   const history= useHistory();
-  const handleClick =() => history.push('/products')
+  const handleClick =() => history.push('/canine')
   const handleCheck =()=>history.push('/services')
   return (
     <div className='hero-container'>
       <video src='/videos/dog.mp4' autoPlay loop muted />
       <h1>WELCOME TO CANINE</h1>
-      <p>What are you waiting for?</p>
+      <p>What are you waiting for? You can Find Dog Breeds and Disease</p>
+      <p>Maintain Your Loved Dogs Profile</p>
       <div className='hero-btns'>
         {/* <button type='button' 
           className='btns'
@@ -35,7 +36,7 @@ function HeroSection() {
           buttonSize='btn--large'
           onClick={handleCheck}
         >
-          WATCH TRAILER <i className='far fa-play-circle' />
+          DOG PROFILE <i className='far fa-play-circle' />
         </Button>
       </div>
     </div>
