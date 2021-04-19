@@ -30,8 +30,7 @@ function Navigation() {
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             <img src='/images/logo_final.png' alt='logo_final'></img>
-            {/* TRVL */}
-            {/* <i class='fab fa-typo3' /> */}
+            
           </Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
@@ -57,7 +56,7 @@ function Navigation() {
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                Products
+                Breeds
               </Link>
             </li>
 

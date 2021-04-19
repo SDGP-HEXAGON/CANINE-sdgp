@@ -80,7 +80,9 @@ body{
     margin: 0;
     padding: 0;
     font-size: 25px;
-    color:rgb(236, 233, 38);
+    color:rgb(255, 251, 0);
+    font-family: 'Times New Roman', Times, serif;
+    
     
    
 }
@@ -91,5 +93,10 @@ body{
     font-size: 16px;
     font: x-large;
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color:#fff;
+    color:rgb(224, 217, 217);
+}
+.container .box .details .content p b{
+    color: rgb(231, 161, 31);
+    font-size: 19px;
+    font-family: 'Courier New', Courier, monospace;
 }
