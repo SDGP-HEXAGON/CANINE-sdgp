@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Container, Spinner } from "reactstrap";
-import AppointmentModal from "./AppointmentModal";
+import AppointmentModel from "./AppointmentModel";
 import axios from "axios";
 import _ from "lodash";
 import "../one.css"
@@ -157,7 +157,7 @@ export default class Services extends Component {
             </ul>
           )}
         </div>
-        <AppointmentModal
+        <AppointmentModel
           serviceName={this.state.selectedService}
           modal={this.state.modal}
           toggle={this.toggle}
