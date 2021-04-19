@@ -7,7 +7,7 @@ import Canine from './components/pages/Canine';
 import Products from './components/pages/Products';
 import Final from './components/pages/Final';
 import Breed from './components/pages/Breed';
-// import SignUp from './components/pages/SignUp';
+import Symptoms from './components/pages/Symptoms';
 
 function App() {
   return (
@@ -20,8 +20,7 @@ function App() {
           <Route path='/products' component={Products} />
           <Route path='/final' component={Final} />
           <Route path='/breed' component={Breed}/>
-
-          {/* <Route path='/sign-up' component={SignUp} /> */}
+          <Route path='/symptoms' component={Symptoms} />
         </Switch>
       </Router>
     </>
