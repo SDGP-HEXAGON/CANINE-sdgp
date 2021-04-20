@@ -308,6 +308,24 @@ export default function Products() {
                     </div>
                 </div>
 
+                <div class="box">
+                <div class="imgBox">
+                        <img src='images/miniature_pinscher.jpg' alt="miniature"/>
+                    </div>
+                    <div class="details">
+                        <div class="content">
+                        <h2>Miniature Pinscher</h2>
+                        <br/>
+                        <p><b>Hypoallergenic:</b> No</p>
+                        <p><b>Life expectancy   :  </b> 15 years<br/>
+                        <b>Colors   :  </b> Black & Rust, Black & Tan, Stag Red, Chocolate & Rust, Chocolate & Tan, Red<br/>
+                        <b>Temperament   :  </b> Playful, Clever, Friendly, Energetic, Outgoing, Responsive<br/>
+                        <b>Height   :  </b> Female  :   25–28 cm, Male  :   25–30 cm<br/>
+                        <b>Weight   :  </b> Female  :   3.5–5 kg, Male  :   4–5 kg</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
 
