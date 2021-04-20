@@ -1,0 +1,78 @@
+
+/* h2{
+    text-align: center;
+    margin-top: *px;
+} */
+
+.ser_container
+{
+    width:1370px;
+    margin: 70px auto 0;
+    display: flex;
+}
+.ser_container .ser_box
+{
+    position: relative;
+    width: 500px;
+    height: 300px;
+    background:rgb(133, 125, 125);
+    margin: 100px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    display: inline block;
+}
+.ser_container .ser_box .ser_imgBox
+{
+    position: relative;
+    overflow: hidden;
+    border-radius: 0px;
+}
+.ser_container .ser_box .ser_imgBox img
+{
+    max-width: 100%;
+    transition: transform 2s;
+}
+.ser_container .ser_box:hover .ser_imgBox img
+{
+    transform: scale(1.3);
+}
+.ser_container .ser_box .ser_details
+{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, .8);
+    transform: scaleY(0);
+    transition: transform .5s;
+}
+.ser_container .ser_box:hover .ser_details
+{
+    transform: scaleY(1);
+}
+.ser_container .ser_box .ser_details .ser_content
+{
+    position: absolute;
+    top: 150px;
+    transform: translateY(-50%);
+    text-align: center;
+    padding: 15px;
+    color: #fff;
+}
+.ser_container .ser_box .ser_details .ser_content h2
+{
+    margin: 0;
+    padding: 0;
+    font-size: 28px;
+    color: white;
+}
+.ser_container .ser_box .ser_details .ser_content h2
+{
+    margin: 10px 0 0;
+    padding: 0;
+}
+
+
+
+

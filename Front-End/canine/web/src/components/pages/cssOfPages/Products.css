@@ -1,0 +1,102 @@
+body{
+    margin: 0;
+    padding:0;
+    background: #262626;
+    
+}
+
+.container
+{
+    
+    width: 1200px;
+    min-height: 500px;
+    background:#262626;
+    margin:70px auto 0;
+    margin-right: 180px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+}
+.container .box
+{
+    position: relative;
+    width: 500px;
+    height: 300px;
+    background: white;
+    margin:10px;
+    box-sizing: border-box;
+    display:inline-block;
+}
+
+.container .box .imgBox
+{
+    position: relative;
+    overflow: hidden;
+    /* box-shadow: inset 0 1000px 0 1000px rgba(255, 255, 255, 0.2); */
+}
+
+.container .box .imgBox img
+{
+    width: 500px;
+    height: 300px;
+    transition:transform 2s;
+}
+
+.container .box:hover .imgBox img
+{
+    transform:scale(1.2);
+}
+
+.container .box .details
+{
+    position:absolute;
+    top: 10px;
+    left: 10px;
+    bottom: 10px;
+    right: 10px;
+    background:rgba(0, 0, 0, .8) ;
+    transform: scaleY(0);
+    transition: transform .5s;
+}
+
+.container .box:hover .details
+{
+    transform: scaleY(1);
+    border-radius: 10px;
+}
+
+.container .box .details .content
+{
+    position:absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
+    padding: 20px;
+    color: #fff;
+}
+
+.container .box .details .content h2
+{
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    color:rgb(255, 251, 0);
+    font-family: 'Times New Roman', Times, serif;
+    
+    
+   
+}
+.container .box .details .content p
+{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font: x-large;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color:rgb(224, 217, 217);
+}
+.container .box .details .content p b{
+    color: rgb(231, 161, 31);
+    font-size: 19px;
+    font-family: 'Courier New', Courier, monospace;
+}

@@ -1,81 +1,120 @@
-import React, { useState, useEffect } from 'react';
-import { Button } from './Button';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
+import React from "react";
+// import logo from "../logo.svg";
+import { NavLink } from "react-router-dom";
+import axios from "axios";
 
-function Navbar() {
-  const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
+import "./NavBar.css"
 
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
-
-  const showButton = () => {
-    if (window.innerWidth <= 960) {
-      setButton(false);
-    } else {
-      setButton(true);
-    }
+const NavBar = ({ user, setUser }) => {
+  const logout = async () => {
+    try {
+      const config = {
+        headers: {
+          Authorization: user.token,
+        },
+      };
+      const res = await axios.get("/auth/logout", config);
+      if (!res.data.success) {
+        return;
+      }
+      setUser({});
+      localStorage.removeItem("servicesAppointmentUser");
+    } catch (error) {}
   };
-
-  useEffect(() => {
-    showButton();
-  }, []);
-
-  window.addEventListener('resize', showButton);
-
-  return (
-    <>
-      <nav className='navbar'>
-        <div className='navbar-container'>
-          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            <img src='/images/logo_final.png' alt='logo_final'></img>
-            {/* TRVL */}
-            {/* <i class='fab fa-typo3' /> */}
-          </Link>
-          <div className='menu-icon' onClick={handleClick}>
-            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-          </div>
-          <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-            <li className='nav-item'>
-              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                Home
-              </Link>
-            </li>
-            <li className='nav-item'>
-              <Link
-                to='/services'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
-                Services
-              </Link>
-            </li>
-            <li className='nav-item'>
-              <Link
-                to='/products'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
-                Products
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                to='/sign-up'
-                className='nav-links-mobile'
-                onClick={closeMobileMenu}
-              >
-                Sign Up
-              </Link>
-            </li>
-          </ul>
-          {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
-        </div>
+  const guestLinks = (
+    <nav className='topnavbar'>
+      <div className='bar-container'>
+      <ul className="navbar-nav">
+        
+        <li className="nav-item-navPadding">
+          <NavLink className="nav-link" to="/signup">
+            SignUp
+          </NavLink>
+        </li>
+        <li className="nav-item-navPadding">
+          <NavLink className="nav-link" to="/login">
+            Login
+          </NavLink>
+        </li>
+      </ul>
+      </div>
       </nav>
-    </>
   );
-}
 
-export default Navbar;
+  const userLinks = (
+    <nav className='topnavbar'>
+      <div className='bar-container'>
+    
+      <ul className="navbar-nav">
+        <li className="nav-item-navPadding">
+          <NavLink className="nav-link" to="/services">
+          Dog Details
+          </NavLink>
+        </li>
+          <li className="nav-item-navPadding">
+            <a
+              className="nav-link"             
+            >
+              {user.name}
+            </a>
+            </li>
+            <li className="nav-item-navPadding">
+            {/* <div className="nav-item-navPadding"> */}
+              <NavLink className="nav-link" to="/admin/addservice">
+                Add Your Pet Details
+              </NavLink>
+            {/* </div> */}
+          </li>
+        
+      </ul>
+      <ul className="ml-auto navbar-nav">
+        <li className="nav-item mr-2">
+          <NavLink className="nav-link"  to="/final">
+            Welcome {user.name}
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink
+            color="black"
+            className="btn btn-outline lo__btn"
+            type="button"
+            onClick={logout}
+            to="/"
+          >
+            Logout
+          </NavLink>
+        </li>
+      </ul>
+      </div>
+      </nav>
+    
+  );
+  return (
+    <nav className="navbar navbar-expand-lg nav-cont">
+      <NavLink className="navbar-brand" to="/">
+        <img
+          // src="https://gist.githubusercontent.com/prashankhan/5fed43125e54483377b5ee62fce5080e/raw/209c1e2d629196d5bb934be0ed4267bbdae1b24c/kishobigan.svg"
+          style={{width: "200px"}}
+          className="d-inline-block mr-2"
+          alt=""
+        />
+      </NavLink>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarNav">
+        {user.email ? userLinks : guestLinks}
+      </div>
+    </nav>
+  );
+};
+
+export default NavBar;
