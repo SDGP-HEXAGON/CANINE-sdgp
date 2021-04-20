@@ -22,7 +22,7 @@ class Breed extends Component{
                   <br/>
                   {/* <p><b>Find here What breed of the dog you have?</b></p> */}
 
-                    <input type="btn12" name="file" onChange={this.handleChange}/>
+                    <input class="btn12" type="file" name="file" onChange={this.handleChange}/>
                     <br/>
                     <br/>
 
