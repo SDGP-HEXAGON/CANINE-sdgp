@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./AddService.css"
-
+import Footer from '../Footer';
 export default function AddService(props) {
   const [name, setName] = useState("");
   const [district, setDistrict] = useState("");
@@ -79,6 +79,7 @@ export default function AddService(props) {
       </button>
       </form>
             </div>
+            <Footer/>
             </body>
             
         

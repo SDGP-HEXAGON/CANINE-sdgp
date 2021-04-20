@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
+import {useHistory} from 'react-router-dom';
 
 function Navigation() {
+  const history= useHistory();
+  const goClick =() => history.push('/symptoms')
+  
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -28,7 +32,7 @@ function Navigation() {
     <>
       <nav className='navbar'>
         <div className='navbar-container'>
-          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+          <Link to='/main' className='navbar-logo' onClick={closeMobileMenu}>
             <img src='/images/logo_final.png' alt='logo_final'></img>
             
           </Link>
@@ -37,7 +41,7 @@ function Navigation() {
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
-              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+              <Link to='/main' className='nav-links' onClick={closeMobileMenu}>
                 Home
               </Link>
             </li>
@@ -66,11 +70,11 @@ function Navigation() {
                 className='nav-links-mobile'
                 onClick={closeMobileMenu}
               >
-                Sign Up
+                Symptoms
               </Link>
             </li>
           </ul>
-          {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+          {button && <Button onClick={goClick} buttonStyle='btn--outline'>SYMPTOMS</Button>}
         </div>
       </nav>
     </>

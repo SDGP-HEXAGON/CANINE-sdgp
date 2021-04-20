@@ -3,6 +3,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 
+
 import "./Create.css"
 
 const Create = ({ user, setUser }) => {
@@ -69,7 +70,7 @@ const Create = ({ user, setUser }) => {
       </ul>
       <ul className="ml-auto navbar-nav">
         <li className="nav-item mr-2">
-          <NavLink className="nav-link"  to="/final">
+          <NavLink className="nav-link"  to="/admin/addservice">
             Welcome {user.name}
           </NavLink>
         </li>
@@ -79,7 +80,7 @@ const Create = ({ user, setUser }) => {
             className="btn btn-outline lo__btn"
             type="button"
             onClick={logout}
-            to="/"
+            to="/main"
           >
             Logout
           </NavLink>

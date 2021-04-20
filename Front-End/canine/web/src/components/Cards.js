@@ -14,7 +14,7 @@ function Cards() {
               src='images/d2.jpg'
               text='Intelligent, Stubborn, Curious, Alert and easy to train'
               label='Sheperd'
-              path='/'
+              path='/products'
             />
             <CardItem
               src='images/d1.jpg'
@@ -28,7 +28,7 @@ function Cards() {
               src='images/d7.jpg'
               text='Single owner dog, aggressive and best dog breed for guard their owners '
               label='Rottweiler'
-              path='/services'
+              path='/products'
             />
             <CardItem
               src='images/d8.jpg'
@@ -40,7 +40,7 @@ function Cards() {
               src='images/d6.jpg'
               text='Single owner dog and best dog breed for guard their owners'
               label='Dobermann'
-              path='/sign-up'
+              path='/products'
             />
             {/* Click to Find more Breeds */}
           </ul>
