@@ -22,7 +22,7 @@ class Breed extends Component{
                   <br/>
                   {/* <p><b>Find here What breed of the dog you have?</b></p> */}
 
-                    <input type="btn3" name="file" onChange={this.handleChange}/>
+                    <input type="btn12" name="file" onChange={this.handleChange}/>
                     <br/>
                     <br/>
 
@@ -31,7 +31,7 @@ class Breed extends Component{
                     </div>
 
 			              <div>
-                    <button  className='btn2'>Find the Breed</button>
+                    <button  className='btn12'>Find the Breed</button>
 			              </div>
                     <br/>
 
