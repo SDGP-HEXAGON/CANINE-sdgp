@@ -9,18 +9,21 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 rondom = RandomForestClassifier()
 
-sym = pd.read_csv("sym_count.csv")
 
 app = Flask(__name__)
 CORS(app)
 
 @app.route('/api/get/data/disese', methods=['PUT'])
 def create_record():
+
+    # Load csv file
+    sym = pd.read_csv("../../Data-Science/Diseases/sym_count.csv")
+
     #get data array from react
     record = json.loads(request.data)
     
     #processing code to prepair 
-    print(record)
+    # print(record)
     l2_dataframe = pd.DataFrame(record)
     list_f = []
     sample = (l2_dataframe.gender.unique())
@@ -51,17 +54,18 @@ def create_record():
     list_01 = list_01.replace('Male',5002)
     list_01 = list_01.replace('Female',5003)
     list_01 = list_01.replace('common',6001)
-    list_01 = list_01.replace('Five',6002)
-    list_01 = list_01.replace('Ten',6003)
-    list_01 = list_01.replace('Fifteen',6004)
+    list_01 = list_01.replace('Below Five',6002)
+    list_01 = list_01.replace('Below Ten',6003)
+    list_01 = list_01.replace('Below Fifteen',6004)
     print(list_01)
 
     #read modle
-    with open('mode_pickle','rb') as f:
-        exam = pickle.load(f)
+    with open('../../Data-Science/Diseases/disease_model.pkl','rb') as f:
+        predict_model = pickle.load(f)
     #get prediction
     list_last = list_01[0].values
-    disease = exam.predict([list_last])
+    disease = predict_model.predict([list_last])
+
     print("Your Dog Have ",disease[0],"Disease!!!!")
 
     #return value to react
