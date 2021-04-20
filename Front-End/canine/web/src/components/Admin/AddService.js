@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../one.css"
+import "./AddService.css"
 
 export default function AddService(props) {
   const [name, setName] = useState("");
@@ -33,17 +33,16 @@ export default function AddService(props) {
     }
   };
   return (
-    <div className="container ">
-        <div className="row">
+    <body className="boom">
+        <div className="adding-conten">
 
-            <div className="col-lg-8 login-con">
-
-            <form className=" mt-4" onSubmit={addServiceFormSubmit}>
-      <h3 className="center">ADD Dog Details</h3>
+            <form className=" de-1" onSubmit={addServiceFormSubmit}>
+      <h2 className="comet">ADD Dog Details</h2>
       <hr />
       <div className="alert d-none" id="alert" role="alert"></div>
-      <div className="form-group">
-        <label htmlFor="exampleInputEmail1">Dog Name</label>
+
+      <div className="nothing">
+        <label htmlFor="exampleInputEmail1"><h2>Dog Name</h2></label>
         <input
           type="text"
           className="form-control"
@@ -52,37 +51,37 @@ export default function AddService(props) {
           onChange={(e) => setName(e.target.value)}
           required
         />
-      </div>
-      <div className="form-group">
-        <label htmlFor="exampleInputPassword1">Bread</label>
+      
+        <label htmlFor="exampleInputPassword1"><h2>Bread</h2></label>
         <input
            type="text"
            className="form-control"
+           placeholder="Enter Breed"
           value={district}
           onChange={(e) => setDistrict(e.target.value)}
           required
         >
           </input>
-      </div>
-      <div className="form-group">
-        <label htmlFor="exampleFormControlTextarea1">Age</label>
+      
+        <label htmlFor="exampleFormControlTextarea1"><h2>Age</h2></label>
         <textarea
-          className="form-control"
+          className="hey-control"
+          
           rows="3"
-          placeholder="Age"
+          placeholder="Enter Age"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
           required
         ></textarea>
       </div>
-      <button type="submit" className="btn btn-outline-primary radius">
+      <button type="submit" className="success">
         Add Dog
       </button>
-    </form>
+      </form>
             </div>
-
+            </body>
             
-        </div>
-    </div>
+        
+    
   );
 }
