@@ -35,11 +35,9 @@ export default function AddService(props) {
   return (
     <div className="container ">
         <div className="row">
-            <div className="col-lg-2">
-              
-            </div>
 
             <div className="col-lg-8 login-con">
+
             <form className=" mt-4" onSubmit={addServiceFormSubmit}>
       <h3 className="center">ADD Dog Details</h3>
       <hr />
@@ -83,9 +81,7 @@ export default function AddService(props) {
     </form>
             </div>
 
-            <div className="col-lg-2">
-
-            </div>
+            
         </div>
     </div>
   );
