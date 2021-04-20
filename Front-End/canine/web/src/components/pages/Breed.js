@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './cssOfPages/Breed.css';
-import {Button} from '../Button';
+import Input from '@material-ui/core/Input';
+
 class Breed extends Component{
     constructor(props){
         super(props)
@@ -19,12 +20,9 @@ class Breed extends Component{
             <div class="breed_Container">
                 <h1>Breed Identifier</h1>
                   <br/>
-                    <p><b>"If you don't own a dog, at least one, there may not 
-                    necessarily be anything wrong with you, but there may 
-                    be something wrong with your life."</b></p>
-                    <hr/>
+                  {/* <p><b>Find here What breed of the dog you have?</b></p> */}
 
-                    <input type="file" name="file" onChange={this.handleChange}/>
+                    <input type="btn3" name="file" onChange={this.handleChange}/>
                     <br/>
                     <br/>
 
@@ -33,14 +31,15 @@ class Breed extends Component{
                     </div>
 
 			              <div>
-                    <Button  
-                      className='btns'
-                      buttonStyle='btn--outline'
-                      buttonSize='btn--large'
-                      
-                    >Find the Breed</Button>
-				            {/* <button>Find the Breed</button> */}
+                    <button  className='btn2'>Find the Breed</button>
 			              </div>
+                    <br/>
+
+                    <p>Your Dog's breed is &nbsp;<Input type="text"
+                    defaultValue="" 
+                    inputProps={{ 'aria-label': 'description' }}
+                    /></p>
+                    <br/>
             </div>
         )
     }
