@@ -1,93 +1,217 @@
 /* eslint-disable no-use-before-define */
-import React from 'react';
+import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import './cssOfPages/Symptoms.css';
+import $, { event } from 'jquery';
+import Input from '@material-ui/core/Input';
 // import dieases from './assets/images/dieases.jpeg';
 
-export default function Symptoms() {
+class Symptoms extends Component{
+    constructor(){
+        super()
+        this.state={
+            gen:"",
+            age:"",
+            sym1:"",
+            sym2:"",
+            sym3:"",
+            sym4:"",
+            sym5:"",
+            sym6:"",
+            sym7:"",
+            sym8:"",
+            disease:"",
+
+            data:[]
+        }
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    onSubmit=(e)=>{
+        e.preventDefault()
+        console.log("Work")
+        // this.setState({disease:event.target.data})
+        var formData = [this.state.gen,this.state.age,this.state.sym1,this.state.sym2,this.state.sym3,this.state.sym4,this.state.sym5,this.state.sym6,this.state.sym7,this.state.sym8]
+        //var formData = ['female','five','Abdominal distention','Coughing','Cyanosis','Difficulty breathing','Muscle wasting',0,0,0,0,0,0,0];
+        $.ajax({
+          //url: 'http://127.0.0.1:5000/api/get/data',
+          type: 'PUT', 
+          dataType: 'json',
+          contentType: 'application/json',
+          data: JSON.stringify(formData),
+          success: function(data, textStatus, xhr) {
+              alert("Your Dog have " + data +" Disease");
+              $('#txt').text(data + "- this disease your dog have");
+              data = this.state.disease;
+          },
+          error: function(xhr, textStatus, errorThrown) {
+              console.log('Error in Operation');
+          }
+      });
+      }
+
+    render(){
   return (
-    <div class="Symptoms">
-      {/* <img src={dieases} alt="dieases"/> */}
-      <h1>Diesease Prediction with Canine</h1>
+    <div>
+    <form onSubmit = {this.onSubmit}>
+    <div class="Symptoms" >
       <br/>
-      <Autocomplete
+      <h1>Diesease Prediction with Canine</h1>
+    
+    <Autocomplete
+    value = {this.state.gen}
+    onChange={(event, val) => {
+      this.setState({gen:val})
+    }}
+
       id="gender"
       options={gender}
-      getOptionLabel={(option) => option.title}
-      style={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="Gender" variant="outlined" />}
+      getOptionLabel={(option) => option.gender}
+      style={{width:450,marginLeft:300}}
+      renderInput={(params => <TextField {...params} label="Gender" variant="outlined" required={true}/>)}
     /><br/>
 
-<Autocomplete
+    <Autocomplete
+      value = {this.state.age}
+      onChange={(event, val) => {
+        this.setState({age:val})
+      }}
       id="age"
       options={age}
-      getOptionLabel={(option) => option.title}
-      style={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="Age" variant="outlined" />}
+      getOptionLabel={(option) => option.age}
+      style={{width:450,marginLeft:300}}
+      renderInput={(params => <TextField {...params} label="Age" variant="outlined" required={true} />)}
     /><br/>
 
     <Autocomplete
       id="symp1"
+      value = {this.state.sym1}
+      onChange={(event, val) => {
+        this.setState({sym1:val})
+      }}
       options={symptomsDiesease}
       getOptionLabel={(option) => option.Symptoms}
-      style={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="Symptom 01" variant="outlined" />}
+      style={{width:450,marginLeft:300}}
+      renderInput={(params => <TextField {...params} label="Symptom : 1" variant="outlined" required={true}/>)}
     /><br/>
 
     <Autocomplete
       id="symp2"
+      value = {this.state.sym2}
+      onChange={(event, val) => {
+        this.setState({sym2:val})
+      }}
       options={symptomsDiesease}
       getOptionLabel={(option) => option.Symptoms}
-      style={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="Symptom 02" variant="outlined" />}
+      style={{width:450,marginLeft:300}}
+      renderInput={(params => <TextField {...params} label="Symptom : 2" variant="outlined" required={true}/>)}
     /><br/>
 
     <Autocomplete
       id="symp3"
       options={symptomsDiesease}
       getOptionLabel={(option) => option.Symptoms}
-      style={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="Symptom 03" variant="outlined" />}
+      value = {this.state.sym3}
+      onChange={(event, val) => {
+        this.setState({sym3:val})
+      }}
+      style={{width:450,marginLeft:300}}
+      renderInput={(params => <TextField {...params} label="Symptom : 3" variant="outlined" required={true}/>)}
     /><br/>
 
     <Autocomplete
       id="symp4"
       options={symptomsDiesease}
+      value = {this.state.sym4}
+      onChange={(event, val) => {
+        this.setState({sym4:val})
+      }}
       getOptionLabel={(option) => option.Symptoms}
-      style={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="Symptom 04" variant="outlined" />}
+      style={{width:450,marginLeft:300}}
+      renderInput={(params => <TextField {...params} label="Symptom : 4" variant="outlined" required={true} />)}
     /><br/>
 
      <Autocomplete
       id="symp5"
       options={symptomsDiesease}
+      value = {this.state.sym5}
+      onChange={(event, val) => {
+        this.setState({sym5:val})
+      }}
       getOptionLabel={(option) => option.Symptoms}
-      style={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="Symptom 05" variant="outlined" />}
+      style={{width:450,marginLeft:300}}
+      renderInput={(params => <TextField {...params} label="Symptom : 5" variant="outlined" required={true}/>)}
     /><br/>
-    <button onClick="Submit">Predict</button>
+
+<Autocomplete
+      id="symp6"
+      options={symptomsDiesease}
+      value = {this.state.sym6}
+      onChange={(event, val) => {
+        this.setState({sym6:val})
+      }}
+      getOptionLabel={(option) => option.Symptoms}
+      style={{width:450,marginLeft:300}}
+      renderInput={(params => <TextField {...params} label="Symptom : 6" variant="outlined"/>)}
+    /><br/>
+
+<Autocomplete
+      id="symp7"
+      options={symptomsDiesease}
+      value = {this.state.sym7}
+      onChange={(event, val) => {
+        this.setState({sym7:val})
+      }}
+      getOptionLabel={(option) => option.Symptoms}
+      style={{width:450,marginLeft:300}}
+      renderInput={(params => <TextField {...params} label="Symptom : 7" variant="outlined"/>)}
+    /><br/>
+
+<Autocomplete
+      id="symp8"
+      options={symptomsDiesease}
+      value = {this.state.sym8}
+      onChange={(event, val) => {
+        this.setState({sym8:val})
+      }}
+      getOptionLabel={(option) => option.Symptoms}
+      style={{width:450,marginLeft:300}}
+      renderInput={(params => <TextField {...params} label="Symptom : 8" variant="outlined"/>)}
+    /><br/>
     <br/>
-    <h3>a) The diesease is " ********** "</h3>
+
+    <button class="btn1" type = "submit"><b>Predict</b></button>
+    <br/><br/>
+
+    <p><b>Disease &nbsp;:- </b>&nbsp;<Input type="text"
+    defaultValue="" 
+    inputProps={{ 'aria-label': 'description' }}
+    /></p>
     <br/>
-    <h3>b) Percentage of prediction is " *** %"</h3>
+    <br/>
     </div>
-  );
+    </form>
+    </div>
+  )
+    };
 }
+export default Symptoms
 
 // gender option
 const gender = [
-  {title: 'Male'},
-  {title: 'Female'},
-  {title: 'Common'},
-];
+    {gender:'Male'},
+    {gender:'Female'},
+    {gender :'Both'},
+  ];
 
 // age option
 const age = [
-  {title: 'Five'},
-  {title: 'Ten'},
-  {title: 'Fifteen'},
-];
+    {age: 'Below Five'},
+    {age: 'Below Ten'},
+    {age: 'Below Fifteen'},
+    {age:'common'},
+  ];
 
 // Symptoms for dog dieasese 
 const symptomsDiesease = [
