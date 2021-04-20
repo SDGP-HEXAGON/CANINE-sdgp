@@ -3,9 +3,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 
-import "./NavBar.css"
+import "./Navbar.css"
 
-const NavBar = ({ user, setUser }) => {
+const Navbar = ({ user, setUser }) => {
   const logout = async () => {
     try {
       const config = {
@@ -22,9 +22,9 @@ const NavBar = ({ user, setUser }) => {
     } catch (error) {}
   };
   const guestLinks = (
-    <nav className='topnavbar'>
+    <nav className='topNavbar'>
       <div className='bar-container'>
-      <ul className="navbar-nav">
+      <ul className="Navbar-nav">
         
         <li className="nav-item-navPadding">
           <NavLink className="nav-link" to="/signup">
@@ -42,10 +42,10 @@ const NavBar = ({ user, setUser }) => {
   );
 
   const userLinks = (
-    <nav className='topnavbar'>
+    <nav className='topNavbar'>
       <div className='bar-container'>
     
-      <ul className="navbar-nav">
+      <ul className="Navbar-nav">
         <li className="nav-item-navPadding">
           <NavLink className="nav-link" to="/services">
           Dog Details
@@ -67,7 +67,7 @@ const NavBar = ({ user, setUser }) => {
           </li>
         
       </ul>
-      <ul className="ml-auto navbar-nav">
+      <ul className="ml-auto Navbar-nav">
         <li className="nav-item mr-2">
           <NavLink className="nav-link"  to="/final">
             Welcome {user.name}
@@ -90,8 +90,8 @@ const NavBar = ({ user, setUser }) => {
     
   );
   return (
-    <nav className="navbar navbar-expand-lg nav-cont">
-      <NavLink className="navbar-brand" to="/">
+    <nav className="Navbar Navbar-expand-lg nav-cont">
+      <NavLink className="Navbar-brand" to="/">
         <img
           // src="https://gist.githubusercontent.com/prashankhan/5fed43125e54483377b5ee62fce5080e/raw/209c1e2d629196d5bb934be0ed4267bbdae1b24c/kishobigan.svg"
           style={{width: "200px"}}
@@ -100,21 +100,21 @@ const NavBar = ({ user, setUser }) => {
         />
       </NavLink>
       <button
-        className="navbar-toggler"
+        className="Navbar-toggler"
         type="button"
         data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
+        data-target="#NavbarNav"
+        aria-controls="NavbarNav"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span className="navbar-toggler-icon"></span>
+        <span className="Navbar-toggler-icon"></span>
       </button>
-      <div className="collapse navbar-collapse" id="navbarNav">
+      <div className="collapse Navbar-collapse" id="NavbarNav">
         {user.email ? userLinks : guestLinks}
       </div>
     </nav>
   );
 };
 
-export default NavBar;
+export default Navbar;
