@@ -69,21 +69,26 @@ const Create = ({ user, setUser }) => {
         
       </ul>
       <ul className="ml-auto navbar-nav">
-        <li className="nav-item mr-2">
+        <li className="nav-item-mr-2">
           <NavLink className="nav-link"  to="/admin/addservice">
-            Welcome {user.name}
+            Welcome {user.name}<i class="far fa-user-circle fa-2x"/>
           </NavLink>
         </li>
+
         <li className="nav-item">
+
+          {/* <button className="log-btn"> */}
           <NavLink
             color="black"
-            className="btn btn-outline lo__btn"
+            className="nav-link"
             type="button"
             onClick={logout}
             to="/main"
           >
-            Logout
+            LOGOUT
+            
           </NavLink>
+          {/* </button> */}
         </li>
       </ul>
       </div>

@@ -79,7 +79,7 @@ export default function AddService(props) {
       </button>
       </form>
             </div>
-            <Footer/>
+            {/* <Footer/> */}
             </body>
             
         

@@ -32,7 +32,7 @@ function Navigation() {
     <>
       <nav className='navbar'>
         <div className='navbar-container'>
-          <Link to='/main' className='navbar-logo' onClick={closeMobileMenu}>
+          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             <img src='/images/logo_final.png' alt='logo_final'></img>
             
           </Link>
@@ -41,7 +41,7 @@ function Navigation() {
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
-              <Link to='/main' className='nav-links' onClick={closeMobileMenu}>
+              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
                 Home
               </Link>
             </li>

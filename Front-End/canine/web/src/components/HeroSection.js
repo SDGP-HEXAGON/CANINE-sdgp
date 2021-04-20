@@ -36,7 +36,7 @@ function HeroSection() {
           buttonSize='btn--large'
           onClick={handleCheck}
         >
-          DOG PROFILE <i className='far fa-play-circle' />
+          DOG PROFILE <i className='fas fa-user fa-lg' />
         </Button>
       </div>
     </div>

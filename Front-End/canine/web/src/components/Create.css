@@ -16,7 +16,7 @@ justify-content: center;
 align-items: center;
 margin-left: -500px;
 height: 80px;
-max-width: 1500px;
+max-width: 1980px;
 }
 
 .navbar-nav {
@@ -53,4 +53,14 @@ max-width: 1500px;
   border: 3px solid rgb(0, 0, 0);
   transition: all 0.2s ease-out;
   border-radius: 8px;
+}
+.nav-item-navPadding,
+.nav-item-mr-2{
+  background: rgb(26, 22, 36);
+  border-radius: 8px;
+  opacity: 0.79;
+}
+.fa-user-circle {
+  margin-left: 12px;
+  
 }

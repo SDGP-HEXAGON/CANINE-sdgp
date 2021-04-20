@@ -9,8 +9,8 @@ import Products from './components/pages/Products';
 //import SignUp from './components/pages/SignUp';
 
 import Final from './components/pages/Final';
-import Signup from './components/Signup';
-import Login from './components/Login';
+// import Signup from './components/Signup';
+// import Login from './components/Login';
 import Breed from './components/pages/Breed';
 import Symptoms from './components/pages/Symptoms';
 
@@ -20,12 +20,12 @@ function App() {
       <Router>
         <Navigation />
         <Switch>
-          <Route path='/main' exact component={Home} />
+          <Route path='/' exact component={Home} />
           <Route path='/canine' component={Canine} />
           <Route path='/products' component={Products} />
 
-          <Route path='/signup' component={Signup} />
-          <Route path='/login' component={Login} />
+          {/* <Route path='/signup' component={Signup} />
+          <Route path='/login' component={Login} /> */}
 
           <Route path='/final' component={Final} />
           <Route path='/breed' component={Breed}/>
