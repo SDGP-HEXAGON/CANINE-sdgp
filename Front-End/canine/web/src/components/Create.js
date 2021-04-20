@@ -3,9 +3,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 
-import "./NavBar.css"
+import "./Create.css"
 
-const NavBar = ({ user, setUser }) => {
+const Create = ({ user, setUser }) => {
   const logout = async () => {
     try {
       const config = {
@@ -117,4 +117,4 @@ const NavBar = ({ user, setUser }) => {
   );
 };
 
-export default NavBar;
+export default Create;
