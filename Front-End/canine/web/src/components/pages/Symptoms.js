@@ -19,7 +19,7 @@ class Symptoms extends Component{
             sym6:"",
             sym7:"",
             sym8:"",
-            disease:"",
+            disease1:"",
 
             data:[]
         }
@@ -29,20 +29,32 @@ class Symptoms extends Component{
     //onSubmit function to passing user input to server
     onSubmit=(e)=>{
         e.preventDefault()
-        console.log("Work")
-        var formData = [this.state.gen,this.state.age,this.state.sym1,this.state.sym2,this.state.sym3,this.state.sym4,this.state.sym5,this.state.sym6,this.state.sym7,this.state.sym8]
+        //console.log("Work")
+        if(this.state.sym6 !== '' && this.state.sym7 === '' && this.state.sym8 === ''){
+          var formData = [this.state.gen,this.state.age,this.state.sym1,this.state.sym2,this.state.sym3,this.state.sym4,this.state.sym5,this.state.sym6]
+          }
+          else if(this.state.sym6 !== '' && this.state.sym7 !== '' && this.state.sym8 === ''){
+           formData = [this.state.gen,this.state.age,this.state.sym1,this.state.sym2,this.state.sym3,this.state.sym4,this.state.sym5,this.state.sym6,this.state.sym7]
+            }
+           else if(this.state.sym6 !== '' && this.state.sym7 !== '' && this.state.sym8 !== ''){
+             formData = [this.state.gen,this.state.age,this.state.sym1,this.state.sym2,this.state.sym3,this.state.sym4,this.state.sym5,this.state.sym6,this.state.sym7,this.state.sym8]
+            }
+            else{
+               formData = [this.state.gen,this.state.age,this.state.sym1,this.state.sym2,this.state.sym3,this.state.sym4,this.state.sym5]
+            }
+        //var formData = [this.state.gen,this.state.age,this.state.sym1,this.state.sym2,this.state.sym3,this.state.sym4,this.state.sym5,this.state.sym6,this.state.sym7,this.state.sym8]
         //var formData = ['female','five','Abdominal distention','Coughing','Cyanosis','Difficulty breathing','Muscle wasting',0,0,0,0,0,0,0];
         $.ajax({
-          //url: 'http://127.0.0.1:5000/api/get/data',
+          url: 'http://127.0.0.1:5000/api/get/data/disese',
           type: 'PUT', 
           dataType: 'json',
           contentType: 'application/json',
           data: JSON.stringify(formData),
           success: function(data, textStatus, xhr) {
-              alert("Your Dog have " + data +" Disease");
+              //alert("Your Dog have " + data +" Disease");
               $('#txt').text(data + "- this disease your dog have");
-              data = this.state.disease;
-          },
+              this.setState({disease1:data});
+          }.bind(this),
           error: function(xhr, textStatus, errorThrown) {
               console.log('Error in Operation');
           }
@@ -183,7 +195,7 @@ class Symptoms extends Component{
     <br/><br/>
 
     <p><b>Disease &nbsp;:- </b>&nbsp;<Input type="text"
-    defaultValue="" 
+    value= {this.state.disease1} 
     inputProps={{ 'aria-label': 'description' }}
     /></p>
     <br/>
