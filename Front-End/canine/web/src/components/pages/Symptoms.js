@@ -1,11 +1,9 @@
-/* eslint-disable no-use-before-define */
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import './cssOfPages/Symptoms.css';
 import $, { event } from 'jquery';
 import Input from '@material-ui/core/Input';
-// import dieases from './assets/images/dieases.jpeg';
 
 class Symptoms extends Component{
     constructor(){
@@ -28,10 +26,10 @@ class Symptoms extends Component{
         this.onSubmit = this.onSubmit.bind(this);
     }
 
+    //onSubmit function to passing user input to server
     onSubmit=(e)=>{
         e.preventDefault()
         console.log("Work")
-        // this.setState({disease:event.target.data})
         var formData = [this.state.gen,this.state.age,this.state.sym1,this.state.sym2,this.state.sym3,this.state.sym4,this.state.sym5,this.state.sym6,this.state.sym7,this.state.sym8]
         //var formData = ['female','five','Abdominal distention','Coughing','Cyanosis','Difficulty breathing','Muscle wasting',0,0,0,0,0,0,0];
         $.ajax({
