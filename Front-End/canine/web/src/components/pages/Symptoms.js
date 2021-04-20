@@ -200,7 +200,7 @@ export default Symptoms
 const gender = [
     {gender:'Male'},
     {gender:'Female'},
-    {gender :'Both'},
+    // {gender :'Both'},
   ];
 
 // age option
@@ -208,7 +208,7 @@ const age = [
     {age: 'Below Five'},
     {age: 'Below Ten'},
     {age: 'Below Fifteen'},
-    {age:'common'},
+    // {age:'common'},
   ];
 
 // Symptoms for dog dieasese 
