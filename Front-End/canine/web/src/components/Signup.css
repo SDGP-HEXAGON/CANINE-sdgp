@@ -1,0 +1,94 @@
+body.its2{
+    /* background-image: url(img-home.jpg); */
+    opacity: 0.90;
+    width: 100%;
+    background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.sign-content{
+    margin-left: 30%;
+    margin-top: 0px;
+    opacity: 0.90;
+}
+/* change */
+form h2.centertext{
+    font-size: 50px;
+    
+    text-align: center;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+/* .container{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap :7rem;
+    padding: 0 2rem;
+} */
+label h2{
+    margin-top: 20px;
+    font-size: 25px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color:rgb(255, 255, 255);
+    text-align: center;
+}
+form {
+    width: 50%;
+    border: 5px solid #cecbcb;
+    border-radius: 15px;
+    padding:center;
+    background: rgb(96, 99, 99);
+    
+}
+    
+    input[type=email], input[type=name] , input[type=password] {
+      width: 100%;
+      font-size: larger;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    
+    button.othersubmit {
+      background-color: #66ff58;
+      color: rgb(0, 0, 0);
+      padding: 20px 20px;
+      margin: 20px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      font-size: 27px;
+      font-family:monospace;
+    }
+    
+    button.othersubmit:hover {
+      opacity: 0.8;
+      color: rgb(0, 0, 0);
+    }
+    
+    
+    
+    /* .imgcontainer {
+      text-align: center;
+      margin: 24px 0 12px 0;
+    }
+    
+    .logimage {
+      width: 30%;
+      border-radius: 50%;
+      margin-left: 35%;
+      display: flex;
+	justify-content: flex-end;
+	align-items: center;
+    }
+     */
+    
+    
+   
+    
+   

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import './cssOfPages/Symptoms.css';
-import $, { event } from 'jquery';
+import $,{ event } from 'jquery';
 import Input from '@material-ui/core/Input';
 
 class Symptoms extends Component{
@@ -51,11 +51,11 @@ class Symptoms extends Component{
 
     render(){
   return (
-    <div>
-    <form onSubmit = {this.onSubmit}>
+    <body className="my3">
+    <form className="dsfill" onSubmit = {this.onSubmit}>
     <div class="Symptoms" >
       <br/>
-      <h1>Diesease Prediction with Canine</h1>
+      <h1>Diesease Prediction With Canine</h1>
     
     <Autocomplete
     value = {this.state.gen}
@@ -190,7 +190,7 @@ class Symptoms extends Component{
     <br/>
     </div>
     </form>
-    </div>
+    </body>
   )
     };
 }

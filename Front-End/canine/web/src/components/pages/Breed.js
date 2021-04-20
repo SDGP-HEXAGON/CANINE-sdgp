@@ -17,6 +17,7 @@ class Breed extends Component{
       }
     render(){
         return(
+          <body className="arul">
             <div class="breed_Container">
                 <h1>Breed Identifier</h1>
                   <br/>
@@ -41,6 +42,7 @@ class Breed extends Component{
                     /></p>
                     <br/>
             </div>
+            </body>
         )
     }
 }

@@ -1,16 +1,16 @@
-body{
+/* body{
     margin: 0;
     padding:0;
     background: white;
     
-}
+} */
 
 .container
 {
     
     width: 1200px;
     min-height: 500px;
-    background:#262626;
+    /* background:#262626; */
     margin:70px auto 0;
     margin-right: 180px;
     display: flex;

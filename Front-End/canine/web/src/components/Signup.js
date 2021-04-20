@@ -46,35 +46,32 @@ export default class Signup extends Component {
       return <Redirect to="/login" />;
     }
     return (
-      <div className="container">
-        <div className="row">
-            <div className="col-lg-4">
-
-            </div>
-
-            <div className="col-lg-4 login-con">
-            <form className="mt-4" onSubmit={this.submitSignupForm}>
-        <h3 className="center">Sign Up</h3>
+      <body className="its2">
+        <div className="sign-content">
+        <form className="sn-1" onSubmit={this.submitSignupForm}>
+        <h2 className="signtext">Sign Up</h2>
         <hr />
+
         <div
           className="alert alert-danger d-none"
           id="alert"
           role="alert"
         ></div>
-        <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Name</label>
+
+        <div className="two">
+          <label className="vid" htmlFor="exampleInputEmail1"><h2>Name</h2></label>
           <input
             type="name"
-            className="form-control"
+            className="name-control"
             aria-describedby="emailHelp"
             placeholder="Name"
             onChange={(e) => this.setState({ name: e.target.value })}
             value={this.state.name}
             required
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email address</label>
+        
+       
+          <label htmlFor="exampleInputEmail1"><h2>Email address</h2></label>
           <input
             type="email"
             className="form-control"
@@ -84,9 +81,8 @@ export default class Signup extends Component {
             value={this.state.email}
             required
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="exampleInputPassword1">Password</label>
+        
+          <label htmlFor="exampleInputPassword1"><h2>Password</h2></label>
           <input
             type="password"
             className="form-control"
@@ -95,9 +91,9 @@ export default class Signup extends Component {
             value={this.state.password1}
             required
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="exampleInputPassword1">Confirm Password</label>
+        
+        
+          <label htmlFor="exampleInputPassword1"><h2>Confirm Password</h2></label>
           <input
             type="password"
             className="form-control"
@@ -107,17 +103,12 @@ export default class Signup extends Component {
             required
           />
         </div>
-        <button type="submit" className="btn btn-outline-primary btn-block col-6-btn radius">
-          Sign Up
+        <button type="submit" className="othersubmit">
+          <b>Sign Up</b>
         </button>
       </form>
             </div>
-
-            <div className="col-lg-4">
-
-            </div>
-        </div>
-      </div>
+            </body>
     );
   }
 }

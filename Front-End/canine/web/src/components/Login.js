@@ -47,7 +47,7 @@ export default class Login extends Component {
 
 <div className="login-content">
 <form className="mt-4" onSubmit={this.submitLoginForm}>
-<h2 className="center">WELCOME</h2>
+  <h2 className="centertext">WELCOME</h2>
 <div class="imgcontainer">
     <img src={avatar} alt="avatar" className="logimage" />
   </div>

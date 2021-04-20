@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "../Navbar";
+import NavBar from "../NavBar";
 import Appoiments from "../Appointments";
 import Data from "../Data";
 import Login from "../Login";
@@ -57,7 +57,7 @@ class Final extends Component {
     return (
       // <HashRouter>
         <Router>
-          <Navbar user={this.state.user} setUser={this.setUser} />
+          <NavBar user={this.state.user} setUser={this.setUser} />
           
           <Switch>
             <Route exact path="/" component={Data} />
