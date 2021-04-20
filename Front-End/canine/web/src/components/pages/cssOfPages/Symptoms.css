@@ -1,10 +1,55 @@
 .Symptoms
 {
-    width: 655px;
-    /* background-image: url(/public/images/d2.jpg); */
-    margin: auto;
-    margin-top: 100px;
-    background:burlywood;
+    width:1200px;
+    height: auto;
+    background: linear-gradient(299deg, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 82%);
+    /* margin: 20px auto 0px; */
+    margin: 30px auto 0;
     text-align: center;
-    font-family: sans-serif;
+    font-family:cursive;
+    display:relative;
+    margin-bottom: 20px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+.Symptoms h1
+{
+    color: black;
+    font-family: cursive;
+    color: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 80%);
+}
+
+.Symptoms p
+{
+    color: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 80%);
+    /* font-family: cursive; */
+}
+
+input[type="text"]
+{
+    background-color: white;
+    
+}
+
+.Symptoms .btn1
+{
+  background-color:#254e58;
+  border: white;
+  font-family: cursive;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 8px;
+  font-size: 18px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.Symptoms .btn1:hover
+{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(255, 255, 255, 0.19);
 }
