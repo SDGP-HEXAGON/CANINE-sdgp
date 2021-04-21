@@ -160,6 +160,13 @@ inception_features = get_features(InceptionV3,
                                   inception_preprocessor,
                                   img_size, X)
 
+import pickle
+with open('InceptionV3_s01','wb') as f:
+    pickle.dump(InceptionV3,f)
+
+with open('InceptionV3_s01','rb') as f:
+    InceptionV3 = pickle.load(f)
+
 # Extract features using Xception 
 from keras.applications.xception import Xception, preprocess_input
 xception_preprocessor = preprocess_input
