@@ -42,21 +42,22 @@ export default function AddService(props) {
       <div className="alert d-none" id="alert" role="alert"></div>
 
       <div className="nothing">
-        <label htmlFor="exampleInputEmail1"><h2>Dog Name</h2></label>
+        <label htmlFor="exampleInputEmail1"><h2>Dog Breed</h2></label>
         <input
           type="text"
           className="form-control"
-          placeholder="Name"
+          placeholder="Enter Dog Breed"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
         />
       
-        <label htmlFor="exampleInputPassword1"><h2>Bread</h2></label>
+        <label htmlFor="exampleInputPassword1"><h2>Contact Details</h2></label>
         <input
            type="text"
            className="form-control"
-           placeholder="Enter Breed"
+           rows="3"
+           placeholder="Contact Details "
           value={district}
           onChange={(e) => setDistrict(e.target.value)}
           required

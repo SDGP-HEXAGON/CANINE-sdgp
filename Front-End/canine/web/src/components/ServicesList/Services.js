@@ -3,7 +3,7 @@ import { Button, Container, Spinner } from "reactstrap";
 import AppointmentModel from "./AppointmentModel";
 import axios from "axios";
 import _ from "lodash";
-import "../one.css"
+import "./Services.css"
 
 export default class Services extends Component {
   constructor(props) {
@@ -103,7 +103,7 @@ export default class Services extends Component {
       );
     }
     return (
-      <div className="container">
+      <div className="hoo">
         <div className="row">
           <div className="col-lg-2">
 
@@ -114,7 +114,7 @@ export default class Services extends Component {
           
             
         
-            <h1 className="center">Dog Details</h1>
+            <h1 className="done">You can See All the Dog Details And Contact Their Owners</h1>
           
           <hr />
           <div
@@ -123,14 +123,14 @@ export default class Services extends Component {
             role="alert"
           ></div>
           <form onSubmit={this.searchServices}>
-            <div className="form-group">
-              <label htmlFor="exampleInputEmail1">
+            <div className="here3">
+              <label htmlFor="exampleInputEmail1"><h2>Serach By Age</h2>
 
               </label>
               <input
                 type="name"
                 className="form-control"
-                placeholder="Search Dog Details by thier Name"
+                placeholder="Search Dog Details by thier Age"
                 onChange={(e) => this.searchServices(e.target.value)}
               />
             </div>
@@ -138,23 +138,23 @@ export default class Services extends Component {
           {this.state.services.length === 0 ? (
             <h3 className="mt-4">No Dog Details Found</h3>
           ) : (
-            <ul className="card-columns">
+            <div className="guest-card">
               {this.state.filteredServices.map((service) => {
                 return (
-                  <li className="card col-12 card__2" key={service._id}>
-                    <span className="font-weight-bold">Dog Name:<br/></span> {service.name} <br />
-                    <span className="font-weight-bold">Bread:<br/></span> {service.district} <br />
-                    <span className="font-weight-bold">Age:<br/></span> {service.address}
+                  <div className="card-body" key={service._id}>
+                    <span className="font-weight-bold">Dog Breed : {service.name}</span> <br />
+                    <span className="font-weight-bold">Contact : {service.district} </span><br />
+                    <span className="font-weight-bold">Age :{service.address} </span> 
                     <br />
                     
                     
                   
                     
                   
-                  </li>
+                  </div>
                 );
               })}
-            </ul>
+            </div>
           )}
         </div>
         <AppointmentModel
