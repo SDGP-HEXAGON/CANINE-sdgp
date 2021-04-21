@@ -187,6 +187,26 @@ xception_features = get_features(Xception,
                                  xception_preprocessor,
                                  img_size, X)
 
+with open('Xception_s01','wb') as f:
+    pickle.dump(Xception,f)
+
+with open('xception_preprocessor_s01','wb') as f:
+    pickle.dump(xception_preprocessor,f)
+
+with open('xception_features_s01','wb') as f:
+    pickle.dump(xception_features,f)
+
+
+
+with open('Xception_s01','rb') as f:
+    Xception = pickle.load(f)
+
+with open('xception_preprocessor_s01','rb') as f:
+    xception_preprocessor = pickle.load(f)
+    
+with open('xception_features_s01','rb') as f:
+    xception_features = pickle.load(f)
+
 # Extract features using InceptionResNetV2 
 from keras.applications.inception_resnet_v2 import InceptionResNetV2, preprocess_input
 inc_resnet_preprocessor = preprocess_input
