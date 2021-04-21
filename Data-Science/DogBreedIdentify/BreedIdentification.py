@@ -240,6 +240,25 @@ nasnet_features = get_features(NASNetLarge,
                                nasnet_preprocessor,
                                img_size, X)
 
+with open('NASNetLarge_s01','wb') as f:
+    pickle.dump(NASNetLarge,f)
+
+with open('nasnet_preprocessor_s01','wb') as f:
+    pickle.dump(nasnet_preprocessor,f)
+
+with open('nasnet_features_s01','wb') as f:
+    pickle.dump(nasnet_features,f)
+
+#read NASNetLarge model
+with open('NASNetLarge_s01','rb') as f:
+    NASNetLarge = pickle.load(f)
+
+with open('nasnet_preprocessor_s01','rb') as f:
+    nasnet_preprocessor = pickle.load(f)
+    
+with open('nasnet_features_s01','rb') as f:
+    nasnet_features = pickle.load(f)
+
 del X #to free up some ram memory
 gc.collect()
 
