@@ -164,8 +164,21 @@ import pickle
 with open('InceptionV3_s01','wb') as f:
     pickle.dump(InceptionV3,f)
 
+with open('inception_preprocessor_s01','wb') as f:
+    pickle.dump(inception_preprocessor,f)
+
+with open('inception_features_s01','wb') as f:
+    pickle.dump(inception_features,f)
+
+#read InceptionV3 model
 with open('InceptionV3_s01','rb') as f:
     InceptionV3 = pickle.load(f)
+
+with open('inception_preprocessor_s01','rb') as f:
+    inception_preprocessor = pickle.load(f)
+    
+with open('inception_features_s01','rb') as f:
+    inception_features = pickle.load(f)
 
 # Extract features using Xception 
 from keras.applications.xception import Xception, preprocess_input
