@@ -214,6 +214,25 @@ inc_resnet_features = get_features(InceptionResNetV2,
                                    inc_resnet_preprocessor,
                                    img_size, X)
 
+with open('InceptionResNetV2_s01','wb') as f:
+    pickle.dump(InceptionResNetV2,f)
+
+with open('inc_resnet_preprocessor_s01','wb') as f:
+    pickle.dump(inc_resnet_preprocessor,f)
+
+with open('inc_resnet_features_s01','wb') as f:
+    pickle.dump(inc_resnet_features,f)
+
+#read InceptionResNetV2 model
+with open('InceptionResNetV2_s01','rb') as f:
+    InceptionResNetV2 = pickle.load(f)
+
+with open('inc_resnet_preprocessor_s01','rb') as f:
+    inc_resnet_preprocessor = pickle.load(f)
+    
+with open('inc_resnet_features_s01','rb') as f:
+    inc_resnet_features = pickle.load(f)
+
 # Extract features using NASNetLarge 
 from keras.applications.nasnet import NASNetLarge, preprocess_input
 nasnet_preprocessor = preprocess_input
