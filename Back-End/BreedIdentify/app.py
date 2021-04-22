@@ -150,15 +150,23 @@ with open('..\\..\\Data-Science\\DogBreedIdentify\\nasnet_preprocessor_s01', 'rb
 
 test_features = extact_features(test_data)
 
+# using this post endpoint we are getting the base64 encoded image to be used for the breed identification
 
 @app.route('/api/post/data', methods=['POST'])
 def create_record():
     import base64
-    imgdata = base64.b64decode(request.data['image'])
-    filename = 'some_image.jpg'  # I assume you have a way of picking unique filenames
-    with open(filename, 'wb') as f:
-        f.write(imgdata)
-    img_g = load_img("C:\\Users\\94776\\some_image.jpg", target_size=img_size)
+    requestdata=request.data
+    #removing the unnecassory suffix and prefix
+    data=requestdata.decode('utf-8').replace("{","")
+    data1=data.replace("{","")
+    data2 = data1[1:-1]
+    data3 = data2[8:]
+    # converting string into base64 encoding
+    imgdata = base64.b64decode(data3)
+    filename = 'temp_img.jpg'  # temporary file name
+    with open(filename, 'wb') as h:
+        h.write(imgdata)
+    img_g = load_img(filename, target_size=img_size)
     img_g = np.expand_dims(img_g, axis=0)
     print(f"Predicted label: {classes[np.argmax(img_g[0])]}")
 
