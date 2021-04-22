@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Container, Spinner } from "reactstrap";
+import { Container, Spinner } from "reactstrap";
 import AppointmentModel from "./AppointmentModel";
 import axios from "axios";
 import _ from "lodash";

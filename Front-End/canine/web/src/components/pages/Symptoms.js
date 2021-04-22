@@ -49,12 +49,12 @@ class Symptoms extends Component{
           type: 'PUT', 
           dataType: 'json',
           contentType: 'application/json',
-          data: JSON.stringify(formData),
+          data: JSON.stringify(formData),//predicted data assigned to the variable
           success: function(data, textStatus, xhr) {
               //alert("Your Dog have " + data +" Disease");
               $('#txt').text(data + "- this disease your dog have");
-              this.setState({disease1:data});
-          }.bind(this),
+              this.setState({disease1:data}); //assign returning data from backend
+          }.bind(this),//identify its a functon ti reactjs
           error: function(xhr, textStatus, errorThrown) {
               console.log('Error in Operation');
           }
@@ -79,7 +79,7 @@ class Symptoms extends Component{
       options={gender}
       getOptionLabel={(option) => option.gender}
       style={{width:450,marginLeft:300}}
-      renderInput={(params => <TextField {...params} label="Gender" variant="outlined" required={true}/>)}
+      renderInput={(params => <TextField {...params} label="Gender" variant="outlined" required={true}/>)}//validation
     /><br/>
 
     <Autocomplete
@@ -195,7 +195,7 @@ class Symptoms extends Component{
     <br/><br/>
 
     <p><b>Disease &nbsp;:- </b>&nbsp;<Input type="text"
-    value= {this.state.disease1} 
+    value= {this.state.disease1} //setting the value from the variable
     inputProps={{ 'aria-label': 'description' }}
     /></p>
     <br/>
