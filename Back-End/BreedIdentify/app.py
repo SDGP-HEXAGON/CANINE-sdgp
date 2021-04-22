@@ -24,46 +24,46 @@ CORS(app)
 labels = pd.read_csv('Files\\Dataset\\labels.csv')
 
 # importing the files that are required to run
-with open('Files\\test_array', 'rb') as f:
+with open('..\\..\\Data-Science\\DogBreedIdentify\\test_array', 'rb') as f:
     y = pickle.load(f)
 
-with open('Files\\InceptionV3_s01', 'rb') as f:
+with open('..\\..\\Data-Science\\DogBreedIdentify\\InceptionV3_s01', 'rb') as f:
     InceptionV3 = pickle.load(f)
 
-with open('Files\\inception_features_s01', 'rb') as f:
+with open('..\\..\\Data-Science\\DogBreedIdentify\\inception_features_s01', 'rb') as f:
     inception_features1 = pickle.load(f)
 
-with open('Files\\inception_preprocessor_s01', 'rb') as f:
+with open('..\\..\\Data-Science\\DogBreedIdentify\\inception_preprocessor_s01', 'rb') as f:
     inception_preprocessor = pickle.load(f)
 
-with open('Files\\Xception_s01', 'rb') as f:
+with open('..\\..\\Data-Science\\DogBreedIdentify\\Xception_s01', 'rb') as f:
     Xception = pickle.load(f)
 
-with open('Files\\xception_features_s01', 'rb') as f:
+with open('..\\..\\Data-Science\\DogBreedIdentify\\xception_features_s01', 'rb') as f:
     xception_features1 = pickle.load(f)
 
-with open('Files\\xception_preprocessor_s01', 'rb') as f:
+with open('..\\..\\Data-Science\\DogBreedIdentify\\xception_preprocessor_s01', 'rb') as f:
     xception_preprocessor = pickle.load(f)
 
-with open('Files\\InceptionResNetV2_s01', 'rb') as f:
+with open('..\\..\\Data-Science\\DogBreedIdentify\\InceptionResNetV2_s01', 'rb') as f:
     InceptionResNetV2 = pickle.load(f)
 
-with open('Files\\inc_resnet_features_s01', 'rb') as f:
+with open('..\\..\\Data-Science\\DogBreedIdentify\\inc_resnet_features_s01', 'rb') as f:
     inc_resnet_features1 = pickle.load(f)
 
-with open('Files\\nasnet_features_s01', 'rb') as f:
+with open('..\\..\\Data-Science\\DogBreedIdentify\\nasnet_features_s01', 'rb') as f:
     nasnet_features1 = pickle.load(f)
 
-with open('Files\\inc_resnet_preprocessor_s01', 'rb') as f:
+with open('..\\..\\Data-Science\\DogBreedIdentify\\inc_resnet_preprocessor_s01', 'rb') as f:
     inc_resnet_preprocessor = pickle.load(f)
 
-with open('Files\\final_features_s01', 'rb') as f:
+with open('..\\..\\Data-Science\\DogBreedIdentify\\final_features_s01', 'rb') as f:
     final_features = pickle.load(f)
 
-with open('Files\\NASNetLarge_s01', 'rb') as f:
+with open('..\\..\\Data-Science\\DogBreedIdentify\\NASNetLarge_s01', 'rb') as f:
     NASNetLarge = pickle.load(f)
 
-with open('Files\\nasnet_preprocessor_s01', 'rb') as f:
+with open('..\\..\\Data-Science\\DogBreedIdentify\\nasnet_preprocessor_s01', 'rb') as f:
     nasnet_preprocessor = pickle.load(f)
     # create list of alphabetical sorted labels.
     classes = sorted(list(set(labels['breed'])))
