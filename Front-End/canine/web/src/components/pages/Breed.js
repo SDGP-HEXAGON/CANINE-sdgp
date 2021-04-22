@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './cssOfPages/Breed.css';
 import Input from '@material-ui/core/Input';
-
+import $, { event } from 'jquery';
 class Breed extends Component{
     constructor(props){
         super(props)
@@ -9,11 +9,48 @@ class Breed extends Component{
           file: null
         }
         this.handleChange = this.handleChange.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
       }
       handleChange(event) {
+        console.log('image : ', event.target.files[0]);
+        let file = event.target.files[0];
+        if(file) {
+            const reader = new FileReader();
+            reader.onload = this._handleReaderLoaded.bind(this);
+            reader.readAsBinaryString(file);
+        }
         this.setState({
           file: URL.createObjectURL(event.target.files[0])
         })
+      }
+
+      _handleReaderLoaded = (readerEvt) => {
+        let BinaryString = readerEvt.target.result;
+        this.setState({
+            base64TextString: btoa(BinaryString)
+        })
+      }
+      onSubmit=(e)=>{
+        e.preventDefault()
+        console.log("Work")
+        console.log("base66  : ", this.state.base64TextString );
+
+        var formData ={image: this.state.base64TextString};
+        $.ajax({
+          url: 'http://127.0.0.1:5000/api/post/data',
+          type: 'POST',
+          dataType: 'json',
+          contentType: 'application/json',
+          data: JSON.stringify(formData),
+          success: function(data, textStatus, xhr) {
+              alert("Your Dog have " + data +" Disease");
+              $('#txt').text(data + "- this disease your dog have");
+              data = this.state.disease;
+          },
+          error: function(xhr, textStatus, errorThrown) {
+              console.log('Error in Operation');
+          }
+      });
       }
     render(){
         return(
@@ -32,7 +69,7 @@ class Breed extends Component{
                     </div>
 
 			              <div>
-                    <button  className='btn12'>Find the Breed</button>
+                    <button  className='btn12'onClick={this.onSubmit}>Find the Breed</button>
 			              </div>
                     <br/>
 
