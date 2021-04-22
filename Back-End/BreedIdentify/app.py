@@ -116,7 +116,7 @@ with open('..\\..\\Data-Science\\DogBreedIdentify\\nasnet_preprocessor_s01', 'rb
         return images
 
 
-    test_data = images_to_array_test('..\\..\\Data-Science\\DogBreedIdentify\\dataset\\test\\', img_size)
+    test_data = images_to_array_test('..\\..\\Data-Science\\DogBreedIdentify\\Data-set\\test\\', img_size)
 
     model = Sequential()
     model.add(Dropout(0.7, input_shape=(final_features1.shape[1],)))
