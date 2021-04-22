@@ -7,6 +7,7 @@ class Breed extends Component{
     constructor(props){
         super(props)
         this.state = {
+          breed : "",
           file: null
         }
         this.handleChange = this.handleChange.bind(this)
@@ -44,10 +45,11 @@ class Breed extends Component{
           contentType: 'application/json',
           data: JSON.stringify(formData),
           success: function(data, textStatus, xhr) {
-              alert("Your Dog have " + data +" Disease");
-              $('#txt').text(data + "- this disease your dog have");
-              data = this.state.disease;
+              alert("You upload " + data +" Breed dog image");
+              // $('#txt').text(data + "- this disease your dog have");
+              data = this.state.breed;
           },
+          
           error: function(xhr, textStatus, errorThrown) {
               console.log('Error in Operation');
           }
@@ -75,7 +77,7 @@ class Breed extends Component{
                     <br/>
 
                     <p>Your Dog's breed is &nbsp;<Input type="text"
-                    defaultValue="" 
+                    value ={this.state.breed}
                     inputProps={{ 'aria-label': 'description' }}
                     /></p>
                     <br/>
