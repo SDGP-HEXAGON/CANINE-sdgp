@@ -21,7 +21,7 @@ CORS(app)
 
 
 # reading labels csv file
-labels = pd.read_csv('Files\\Dataset\\labels.csv')
+labels = pd.read_csv('..\\..\\Data-Science\\DogBreedIdentify\\labels.csv')
 
 # importing the files that are required to run
 with open('..\\..\\Data-Science\\DogBreedIdentify\\test_array', 'rb') as f:
