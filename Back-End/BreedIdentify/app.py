@@ -168,10 +168,10 @@ def create_record():
         h.write(imgdata)
     img_g = load_img(filename, target_size=img_size)
     img_g = np.expand_dims(img_g, axis=0)
-    print(f"Predicted label: {classes[np.argmax(img_g[0])]}")
+    return_Value=r"{classes[np.argmax(img_g[0])]}"
 
     # processing code
-    return classes[np.argmax(img_g[0])]
+    return return_Value
 
 
 if __name__ == '__main__':
