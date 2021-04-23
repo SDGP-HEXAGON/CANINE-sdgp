@@ -171,7 +171,7 @@ def create_record():
     getI420FromBase64(codec)
 
 
-    img_g = load_img("image_save01.jpg", target_size=img_size)
+    img_g = load_img("image_save01.png", target_size=img_size)
     img_g = np.expand_dims(img_g, axis=0)
     predg = model.predict(test_features)
     
