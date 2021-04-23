@@ -155,23 +155,30 @@ test_features = extact_features(test_data)
 @app.route('/api/post/data', methods=['POST'])
 def create_record():
     import base64
-    requestdata=request.data
-    #removing the unnecassory suffix and prefix
-    data=requestdata.decode('utf-8').replace("{","")
-    data1=data.replace("{","")
-    data2 = data1[1:-1]
-    data3 = data2[8:]
-    # converting string into base64 encoding
-    imgdata = base64.b64decode(data3)
-    filename = 'temp_img.jpg'  # temporary file name
-    with open(filename, 'wb') as h:
-        h.write(imgdata)
-    img_g = load_img(filename, target_size=img_size)
-    img_g = np.expand_dims(img_g, axis=0)
-    return_Value=r"{classes[np.argmax(img_g[0])]}"
+    from PIL import Image
+    from io import BytesIO
+    import re, time, base64
 
-    # processing code
-    return return_Value
+    requestdata = request.data
+    data = requestdata.decode('utf-8')
+    codec = 'data:image/png;base64,' + data
+
+    def getI420FromBase64(codec):
+        base64_data = re.sub('^data:image/.+;base64,', '', codec)
+        byte_data = base64.b64decode(base64_data)
+        image_data = BytesIO(byte_data)
+        img = Image.open(image_data)
+        img.save(str("image_save01") + '.png')
+
+    getI420FromBase64(codec)
+
+    img_g = load_img("image_save01.png", target_size=img_size)
+    img_g = np.expand_dims(img_g, axis=0)
+    predg = model.predict(test_features)
+    
+    returnValue=f"{classes[np.argmax(predg[0])]}"
+    # returing procsed result
+    return returnValue
 
 
 if __name__ == '__main__':
